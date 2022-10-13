@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Hunger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    int _hungerMax = 50;
+    [SerializeField]
+    int _hungerLevel;
+    public int HungerLevel { get => _hungerLevel; }
+
+    private void Start()
     {
-        
+        StartCoroutine(DecreaseHunger());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void Eat() {
+        _hungerLevel = _hungerMax;
     }
+
+    IEnumerator DecreaseHunger() {
+        while (true) {
+            yield return new WaitForSeconds(1.5f);
+            _hungerLevel--;
+        }
+    }
+
 }
