@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class Reproduce : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject _AnimalPrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void ReproduceAnimal(Vector3 location) {
+        Instantiate(_AnimalPrefab, location, Quaternion.identity);
     }
 }
