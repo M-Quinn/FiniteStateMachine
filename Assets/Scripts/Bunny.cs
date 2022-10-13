@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,39 +11,42 @@ public class Bunny : MonoBehaviour
     [SerializeField] float _speed = 2.5f;
     GameObject _foodFound;
     Vector3 _wanderPosition;
+    StateMachine _stateMachine;
+
     // Start is called before the first frame update
     void Start()
     {
         _hunger = GetComponent<Hunger>();
         _reproduce = GetComponent<Reproduce>();
+        _stateMachine = new StateMachine();
+
+
+        var WanderingState = new Wander_State(_speed, this.gameObject);
+        var FoodHuntState = new FoodHunt_State(this, gameObject, _speed);
+
+        Func<bool> FoundFood() => () => _foodFound != null;
+        Func<bool> NoFood() => () => _foodFound == null;
+
+        _stateMachine.AddTransition(FoodHuntState, WanderingState, NoFood());
+        _stateMachine.AddTransition(WanderingState, FoodHuntState, FoundFood());
+
+        _stateMachine.SetState(WanderingState);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_foodFound != null)
-        {
-            var direction = _foodFound.transform.position - transform.position;
-            direction.Normalize();
-            transform.Translate(direction * _speed * Time.deltaTime);
-        }
-        else if (_hunger.HungerLevel <= 25)
+        _stateMachine.Execute();
+        
+        if (_hunger.HungerLevel <= 25)
         {
             FindFood(transform.position, 25f, _foodMask);
         }
-        else if (_wanderPosition == null)
-        {
-            GetWanderPosition();
-        }
-        else if (_wanderPosition != null) {
-            var direction = _wanderPosition - transform.position;
-            direction.Normalize();
-            transform.Translate(direction * _speed * Time.deltaTime);
-            //If reached destination, get new destination
-            if (Vector3.Distance(transform.position, _wanderPosition) <= 1) {
-                GetWanderPosition();
-            }
-        }
+    }
+
+    public GameObject GetFoodObject() {
+        return _foodFound;
     }
 
     private void FindFood(Vector3 center, float radius, LayerMask foodMask)
@@ -53,10 +57,6 @@ public class Bunny : MonoBehaviour
             _foodFound = hitCollider.gameObject;
             break;
         }
-    }
-
-    private void GetWanderPosition() {
-        _wanderPosition = new Vector3(Random.Range(-49, 50), 0, Random.Range(-49, 50));
     }
 
     private void OnCollisionEnter(Collision collision)
