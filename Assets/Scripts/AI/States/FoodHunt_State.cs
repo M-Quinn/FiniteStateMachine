@@ -17,9 +17,16 @@ public class FoodHunt_State : IState
 
     public void Execute()
     {
-        var direction = food.transform.position - self.transform.position;
-        direction.Normalize();
-        self.transform.Translate(direction * speed * Time.deltaTime);
+        if (food == null)
+        {
+            bunnyScript.FoodIsGone();
+        }
+        else {
+            var direction = food.transform.position - self.transform.position;
+            direction.Normalize();
+            self.transform.Translate(direction * speed * Time.deltaTime);
+        }
+        
     }
 
     public void OnEnter()

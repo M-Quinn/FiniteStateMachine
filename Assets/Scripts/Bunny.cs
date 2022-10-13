@@ -48,6 +48,9 @@ public class Bunny : MonoBehaviour
     public GameObject GetFoodObject() {
         return _foodFound;
     }
+    public void FoodIsGone() {
+        _foodFound = null;
+    }
 
     private void FindFood(Vector3 center, float radius, LayerMask foodMask)
     {
