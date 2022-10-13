@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6492c8ab68bdda54788f1454090def4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hungerLevel: 0
+  _hungerLevel: 50
 --- !u!114 &3895942112973959966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584bb9ef472a9df449ea86aa642f405d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _AnimalPrefab: {fileID: 0}
+  _AnimalPrefab: {fileID: 7939045330853770726}
 --- !u!114 &2441389734031255035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,3 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185fc78d0dab7ec4086643b7da263112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _foodMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _speed: 4.5
