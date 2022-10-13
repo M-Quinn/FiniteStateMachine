@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3840370498570196519}
   - component: {fileID: 3553044126674184057}
   - component: {fileID: 1870140173207348259}
+  - component: {fileID: 881477006}
   m_Layer: 6
   m_Name: Bunny
   m_TagString: Bunny
@@ -127,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584bb9ef472a9df449ea86aa642f405d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _AnimalPrefab: {fileID: 0}
+  _AnimalPrefab: {fileID: 1289792883984959800}
 --- !u!114 &3553044126674184057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,3 +156,20 @@ MonoBehaviour:
   _foodMask:
     serializedVersion: 2
     m_Bits: 128
+  _speed: 2.5
+--- !u!54 &881477006
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289792883984959800}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

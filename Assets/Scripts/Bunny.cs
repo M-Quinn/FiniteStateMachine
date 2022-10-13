@@ -63,6 +63,7 @@ public class Bunny : MonoBehaviour
     {
         if (collision.transform.CompareTag("Food")) {
             _hunger.Eat();
+            _reproduce.ReproduceAnimal(transform.position);
             Destroy(collision.gameObject);
             Debug.Log("Collided with food");
         }

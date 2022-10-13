@@ -20,7 +20,7 @@ public class Hunger : MonoBehaviour
 
     IEnumerator DecreaseHunger() {
         while (true) {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(0.5f);
             _hungerLevel--;
         }
     }
