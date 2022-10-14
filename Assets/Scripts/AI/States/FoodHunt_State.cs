@@ -7,10 +7,10 @@ public class FoodHunt_State : IState
     GameObject food;
     GameObject self;
     float speed;
-    Bunny bunnyScript;
+    IAnimal animalScript;
 
-    public FoodHunt_State(Bunny bunnyScript, GameObject self, float speed) {
-        this.bunnyScript = bunnyScript;
+    public FoodHunt_State(IAnimal animalScript, GameObject self, float speed) {
+        this.animalScript = animalScript;
         this.self = self;
         this.speed = speed;
     }
@@ -19,7 +19,7 @@ public class FoodHunt_State : IState
     {
         if (food == null)
         {
-            bunnyScript.FoodIsGone();
+            animalScript.FoodIsGone();
         }
         else {
             var direction = food.transform.position - self.transform.position;
@@ -31,7 +31,7 @@ public class FoodHunt_State : IState
 
     public void OnEnter()
     {
-        food = bunnyScript.GetFoodObject();
+        food = animalScript.GetFoodObject();
     }
 
     public void OnExit()
