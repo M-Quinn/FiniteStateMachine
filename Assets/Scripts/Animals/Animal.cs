@@ -42,12 +42,12 @@ public class Animal : MonoBehaviour, IAnimal
     void Update()
     {
         _stateMachine.Execute();
-        if (_hunger.HungerLevel <= 0)
+        if (_hunger.IsStarving)
         {
             Die();
             Destroy(gameObject);
         }
-        else if (_hunger.HungerLevel <= 25)
+        else if (_hunger.IsHungry)
         {
             StartCoroutine(FindFood(_foodMask));
         }
@@ -79,6 +79,8 @@ public class Animal : MonoBehaviour, IAnimal
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!_hunger.IsHungry)
+            return;
         if (collision.transform.CompareTag(_foodTag))
         {
             _amountEaten++;

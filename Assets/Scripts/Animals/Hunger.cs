@@ -4,25 +4,34 @@ using UnityEngine;
 
 public class Hunger : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField][Tooltip("The Maximum amount that the animal can eat")]
     int _hungerMax = 50;
-    [SerializeField]
+    [SerializeField][Tooltip("The level at which the animal will begin looking for food")]
     int _hungerLevel;
-    public int HungerLevel { get => _hungerLevel; }
+    [SerializeField][Tooltip("The Current Hunger")]
+    int _currentHunger;
+    public bool IsHungry { get; private set; } = false;
+    public bool IsStarving { get; private set; } = false;
 
     private void Start()
     {
         StartCoroutine(DecreaseHunger());
     }
 
+    private void Update()
+    {
+        IsHungry = (_currentHunger <= _hungerLevel);
+        IsStarving = (_currentHunger <= 0);
+    }
+
     public void Eat() {
-        _hungerLevel = _hungerMax;
+        _currentHunger = _hungerMax;
     }
 
     IEnumerator DecreaseHunger() {
         while (true) {
             yield return new WaitForSeconds(0.5f);
-            _hungerLevel--;
+            _currentHunger--;
         }
     }
 

@@ -116,7 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hungerMax: 35
-  _hungerLevel: 35
+  _hungerLevel: 25
+  _currentHunger: 35
 --- !u!114 &3840370498570196519
 MonoBehaviour:
   m_ObjectHideFlags: 0
