@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Animal : MonoBehaviour, IAnimal
@@ -44,7 +45,7 @@ public class Animal : MonoBehaviour, IAnimal
 
         if (_hunger.HungerLevel <= 25)
         {
-            FindFood(transform.position, 50f, _foodMask);
+            StartCoroutine(FindFood(_foodMask));
         }
     }
 
@@ -56,15 +57,18 @@ public class Animal : MonoBehaviour, IAnimal
     {
         _foodFound = null;
     }
-    
 
-    private void FindFood(Vector3 center, float radius, LayerMask foodMask)
-    {
-        Collider[] hitColliders = Physics.OverlapSphere(center, radius, foodMask);
-        foreach (var hitCollider in hitColliders)
-        {
-            _foodFound = hitCollider.gameObject;
-            break;
+    IEnumerator FindFood(LayerMask foodMask) {
+        var radius = 5;
+        while (_foodFound == null) {
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, foodMask);
+            foreach (var hitCollider in hitColliders)
+            {
+                _foodFound = hitCollider.gameObject;
+                break;
+            }
+            yield return null;
+            radius += 2;
         }
     }
 
