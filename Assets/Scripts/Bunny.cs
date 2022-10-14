@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Bunny : Animal, IAnimal
 {
-    
+    protected override void Start()
+    {
+        base.Start();
+        _foodTag = "Food";
+    }
 
 }

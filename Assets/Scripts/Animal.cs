@@ -10,13 +10,14 @@ public class Animal : MonoBehaviour, IAnimal
     GameObject _foodFound;
     Vector3 _wanderPosition;
     StateMachine _stateMachine;
+    public string _foodTag = "";
 
     [SerializeField]
     int _amountToReproduce;
     int _amountEaten = 0;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         _hunger = GetComponent<Hunger>();
         _reproduce = GetComponent<Reproduce>();
@@ -55,6 +56,7 @@ public class Animal : MonoBehaviour, IAnimal
     {
         _foodFound = null;
     }
+    
 
     private void FindFood(Vector3 center, float radius, LayerMask foodMask)
     {
@@ -68,7 +70,7 @@ public class Animal : MonoBehaviour, IAnimal
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Food"))
+        if (collision.transform.CompareTag(_foodTag))
         {
             _amountEaten++;
             _hunger.Eat();
@@ -86,3 +88,4 @@ public class Animal : MonoBehaviour, IAnimal
 
     }
 }
+
