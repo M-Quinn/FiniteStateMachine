@@ -826,14 +826,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bunny
       objectReference: {fileID: 0}
-    - target: {fileID: 2446498521764376240, guid: 1ef7adb88ae7be74da0eb71070e1b916, type: 3}
-      propertyPath: _hungerLevel
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2446498521764376240, guid: 1ef7adb88ae7be74da0eb71070e1b916, type: 3}
-      propertyPath: _currentHunger
-      value: 35
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ef7adb88ae7be74da0eb71070e1b916, type: 3}
 --- !u!1 &1249904572
@@ -1786,11 +1778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8530737248196036214, guid: 590e90cedad0d614f98198000e3a3fbd, type: 3}
       propertyPath: _hungerLevel
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8530737248196036214, guid: 590e90cedad0d614f98198000e3a3fbd, type: 3}
-      propertyPath: _currentHunger
-      value: 50
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 590e90cedad0d614f98198000e3a3fbd, type: 3}

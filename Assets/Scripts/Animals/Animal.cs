@@ -79,8 +79,6 @@ public class Animal : MonoBehaviour, IAnimal
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!_hunger.IsHungry)
-            return;
         if (collision.transform.CompareTag(_foodTag))
         {
             _amountEaten++;

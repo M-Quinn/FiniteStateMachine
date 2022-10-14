@@ -115,9 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6492c8ab68bdda54788f1454090def4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hungerMax: 35
-  _hungerLevel: 25
-  _currentHunger: 35
+  _hungerMax: 50
+  _hungerLevel: 40
+  _currentHunger: 50
 --- !u!114 &3840370498570196519
 MonoBehaviour:
   m_ObjectHideFlags: 0
