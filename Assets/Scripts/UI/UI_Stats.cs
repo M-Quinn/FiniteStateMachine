@@ -20,20 +20,43 @@ public class UI_Stats : MonoBehaviour
         switch (foodType){
             case FoodType.Food:
                 _totalFood+= amount;
-                _totalFood_Text.text = _totalFood.ToString();
+                SetText(_totalFood_Text, _totalFood, amount);
                 break;
             case FoodType.Bunny: 
                 _totalBunny += amount;
-                _totalBunny_Text.text = _totalBunny.ToString();
+                SetText(_totalBunny_Text, _totalBunny, amount);
                 break;
             case FoodType.Wolf: 
                 _totalWolf += amount;
-                _totalWolf_Text.text = _totalWolf.ToString();
+                SetText(_totalWolf_Text, _totalWolf, amount);
                 break;
             default:
                 Debug.LogError("Update Total_ FoodType error");
                 break;
         }
+    }
+
+    private void SetText(TMP_Text textBox, int total, int amount) {
+        if (amount > 0)
+        {
+            StartCoroutine(FlashText(textBox, true));
+            textBox.text = total.ToString();
+        }
+        else {
+            StartCoroutine(FlashText(textBox, false));
+            textBox.text = total.ToString();
+        }
+    }
+
+    IEnumerator FlashText(TMP_Text textbox, bool isPositive) {
+        if (isPositive) 
+            textbox.color = Color.green;
+        else
+            textbox.color = Color.red;
+
+        yield return new WaitForSeconds(1);
+
+        textbox.color = Color.white;
     }
 }
 public enum FoodType { Food, Bunny, Wolf}

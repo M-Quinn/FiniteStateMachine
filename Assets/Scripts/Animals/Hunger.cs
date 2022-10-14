@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hunger : MonoBehaviour
 {
+    [SerializeField]
     int _hungerMax = 50;
     [SerializeField]
     int _hungerLevel;

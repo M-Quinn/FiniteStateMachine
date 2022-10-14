@@ -42,11 +42,16 @@ public class Animal : MonoBehaviour, IAnimal
     void Update()
     {
         _stateMachine.Execute();
-
-        if (_hunger.HungerLevel <= 25)
+        if (_hunger.HungerLevel <= 0)
+        {
+            Die();
+            Destroy(gameObject);
+        }
+        else if (_hunger.HungerLevel <= 25)
         {
             StartCoroutine(FindFood(_foodMask));
         }
+        
     }
 
     public GameObject GetFoodObject()
