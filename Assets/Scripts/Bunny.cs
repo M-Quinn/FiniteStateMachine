@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bunny : MonoBehaviour
+public class Bunny : MonoBehaviour, IAnimal
 {
     Hunger _hunger;
     Reproduce _reproduce;
@@ -70,5 +70,10 @@ public class Bunny : MonoBehaviour
             Destroy(collision.gameObject);
             Debug.Log("Collided with food");
         }
+    }
+
+    public void DieFromStarvation()
+    {
+        
     }
 }
