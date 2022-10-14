@@ -9,6 +9,10 @@ public class Bunny : Animal, IAnimal
     {
         base.Start();
         _foodTag = "Food";
+        UI_Stats.UpdateFood(FoodType.Bunny, 1);
     }
-
+    public override void Die()
+    {
+        UI_Stats.UpdateFood(FoodType.Bunny, -1);
+    }
 }

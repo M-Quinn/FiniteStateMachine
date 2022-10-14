@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IAnimal 
 {
-    void DieFromStarvation();
+    void Die();
     void FoodIsGone();
     GameObject GetFoodObject();
 

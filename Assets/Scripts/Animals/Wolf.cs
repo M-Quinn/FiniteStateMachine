@@ -8,5 +8,10 @@ public class Wolf : Animal, IAnimal
     {
         base.Start();
         _foodTag = "Bunny";
+        UI_Stats.UpdateFood(FoodType.Wolf, 1);
+    }
+    public override void Die()
+    {
+        UI_Stats.UpdateFood(FoodType.Wolf, -1);
     }
 }

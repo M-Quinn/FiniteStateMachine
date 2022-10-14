@@ -78,6 +78,12 @@ public class Animal : MonoBehaviour, IAnimal
         {
             _amountEaten++;
             _hunger.Eat();
+            if (collision.transform.TryGetComponent(out Animal animal))
+            {
+                animal.Die();
+            }
+            else
+                UI_Stats.UpdateFood(FoodType.Food, -1);
             Destroy(collision.gameObject);
             if (_amountEaten >= _amountToReproduce)
             {
@@ -87,7 +93,7 @@ public class Animal : MonoBehaviour, IAnimal
         }
     }
 
-    public void DieFromStarvation()
+    virtual public void Die()
     {
 
     }
